@@ -13,7 +13,7 @@ For this project, you will be working in pairs to build a Django application tha
 
 * **Already done!** Your application should have a User model (the built-in one is fine) and have registration and login. You do not need to have users click an email link to finish registration -- the simple flow from django-registration-redux is fine.
 * You need to create a Django app. Run `./manage.py startapp <appname>`. If you can't think of a name for your app, `core` is fine.
-* Edit `templates/base.html` to customize your project's style.
+* Edit `templates/stretch_goals/base.html` to customize your project's style.
 
 ### Goal 1: Habits
 
