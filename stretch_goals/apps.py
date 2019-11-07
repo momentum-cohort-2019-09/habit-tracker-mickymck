@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class StretchGoalsConfig(AppConfig):
+class StretchGoals(AppConfig):
     name = 'stretch_goals'

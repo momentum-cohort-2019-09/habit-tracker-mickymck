@@ -1,0 +1,90 @@
+
+* {
+    font-family: 'DIN Alternate', 'Roboto', sans-serif;
+}
+
+body {
+    margin: 0 auto;
+    background-color: #073B4C;
+    margin: 0, auto;
+}
+.main-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 15% 0 5%;
+}
+
+h1 {
+    color: #06D6A0;
+    font-size: 60px;
+    font-weight: 700px;
+}
+
+.top-menu {
+    color: #06D6A0;
+    font-size: 30px;
+    font-weight: 500px;
+}
+
+.goals-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.goal-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 25%;
+    height: 350px;
+    background-color: #006494;
+    color: #f6f0e7;
+    margin: 2% 1%;
+    border-radius: 10px;
+    box-shadow: -5px 8px 10px 0px rgba(0,0,0,0.7);
+}
+
+.goal-card:nth-child(2n+2) {
+    background-color: #FFD166;
+    color: #006494;
+}
+
+.goal-card-main-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.goal-card-title {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 7% auto;
+}
+
+.record-form {
+    margin: 7%;
+    height: 50px;
+    font-size: 34px;
+    text-align: center;
+    color: #073B4C;
+    border-radius: 5px;
+}
+
+.record-submit-button {
+    color: #073B4C;
+    background-color: #f6f0e7;
+    font-size: 24px;
+    border-radius: 5px;
+    margin: 7% 30%;
+    box-shadow: -1px 2px 4px 0px rgba(0,0,0,0.6);
+}
+
+.progress-link {
+    font-size: 20px;
+    text-align: right;
+    padding-right: 5%;
+}

@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf import settings
 from django.urls import path, include
 from django.contrib import admin
+from stretch_goals import views
+from django.conf.urls.static import static
+
 
 urlpatterns = [
+    path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('accounts/', include('registration.backends.simple.urls')),
 ]

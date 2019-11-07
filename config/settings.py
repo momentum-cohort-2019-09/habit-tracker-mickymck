@@ -88,6 +88,8 @@ DATABASES = {
     }
 }
 
+STATIC_URL = '/static/'
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
@@ -106,7 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'stretch_goals.MyUser'
+AUTH_USER_MODEL = 'stretch_goals.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
