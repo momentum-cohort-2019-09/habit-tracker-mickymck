@@ -1,11 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import Http404
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.csrf import csrf_protect
 
 from stretch_goals.models import User, Goal, Record
-from stretch_goals.forms import GoalForm
+from stretch_goals.forms import GoalForm, RecordForm
 from stretch_goals.serializers import UserSerializer, GoalSerializer, RecordSerializer
 
 from rest_framework import viewsets, status, mixins, generics
@@ -17,7 +18,17 @@ from rest_framework.response import Response
 
 def home(request):
     goals = Goal.objects.all()
-    return render(request, "stretch_goals/home.html", {'goals': goals})
+    form = RecordForm(data=request.POST)
+    if request.method == 'POST':
+        if form.is_valid:
+            record = form.save(commit=False)
+            record.user = request.user
+            # record.goal = 
+            record.save()
+            return redirect(to='home')
+        else:
+            form = GoalForm(instance=request.user)
+    return render(request, "stretch_goals/home.html", {'goals': goals, 'form': form})
 
 def create_new_goal(request):
     form = GoalForm(data=request.POST)
@@ -25,13 +36,25 @@ def create_new_goal(request):
         if form.is_valid:
             goal = form.save(commit=False)
             goal.user = request.user
-            goal.create_date = timezone.now
             goal.save()
-            return redirect(to='', pk=goal.pk)
+            return redirect(to='home')
         else:
             form = GoalForm(instance=request.user)
 
     return render(request, 'stretch_goals/create_new_goal.html', {"form": form})
+
+# def create_new_record(request):
+#     form = RecordForm(data=request.POST)
+#     if request.method == 'POST':
+#         if form.is_valid:
+#             record = form.save(commit=False)
+#             record.user = request.user
+#             record.save()
+#             return redirect(to='home', pk=goal.pk)
+#         else:
+#             form = GoalForm(instance=request.user)
+
+#     return render(request, 'stretch_goals/home.html', {"form": form})
 
 class GoalsList(generics.ListCreateAPIView):
     queryset = Goal.objects.all()
