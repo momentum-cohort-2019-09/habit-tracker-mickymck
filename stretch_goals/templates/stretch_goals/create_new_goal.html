@@ -1,0 +1,23 @@
+{% extends "stretch_goals/base.html" %}
+
+{% block content %}
+
+<div class='goal-form-container'>
+
+    <p>What goal will you be achieving?</p>
+    <form action='' method='POST'>
+        {% csrf_token %}
+        <label for="name">Name</label>
+        {{ form.name }}
+        <label for="nickname">Nickname</label>
+        {{ form.nickname }}
+        <label for="greater_than">Greater_Than</label>
+        {{ form.greater_than }}
+        <label for="number">Number</label>
+        {{ form.number }}
+        <button type='submit'>Pose Question</button>
+    </form>
+
+</div>
+
+{% endblock %}

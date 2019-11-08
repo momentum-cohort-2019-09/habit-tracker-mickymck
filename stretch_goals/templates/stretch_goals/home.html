@@ -4,50 +4,18 @@
 
 <div class='goals-container'>
 
+    {% for goal in goals %}
+
     <div class='goal-card'>
         <div class='goal-card-main-body'>
-            <p class='goal-card-title'>Steps</p>
-            <input type='text' class='record-form'>
-            <button type='submit' class='record-submit-button'>submit</button>
+            <p class='goal-card-title'>{{ goal.nickname }}</p>
+            <input type='text' class='record-form' data-goalpk='{{ goal.pk }}'>
+            <button data-actualnumberpk="{{actual_number.pk}}" type='submit' class='record-submit-button'>submit</button>
         </div>
         <p class='progress-link'>see your progress --></p>
     </div>
 
-    <div class='goal-card'>
-        <div class='goal-card-main-body'>
-            <p class='goal-card-title'>Steps</p>
-            <input type='text' class='record-form'>
-            <button type='submit' class='record-submit-button'>submit</button>
-        </div>
-        <p class='progress-link'>see your progress --></p>
-    </div>
-
-    <div class='goal-card'>
-        <div class='goal-card-main-body'>
-            <p class='goal-card-title'>Steps</p>
-            <input type='text' class='record-form'>
-            <button type='submit' class='record-submit-button'>submit</button>
-        </div>
-        <p class='progress-link'>see your progress --></p>
-    </div>
-
-    <div class='goal-card'>
-        <div class='goal-card-main-body'>
-            <p class='goal-card-title'>Steps</p>
-            <input type='text' class='record-form'>
-            <button type='submit' class='record-submit-button'>submit</button>
-        </div>
-        <p class='progress-link'>see your progress --></p>
-    </div>
-
-    <div class='goal-card'>
-        <div class='goal-card-main-body'>
-            <p class='goal-card-title'>Steps</p>
-            <input type='text' class='record-form'>
-            <button type='submit' class='record-submit-button'>submit</button>
-        </div>
-        <p class='progress-link'>see your progress --></p>
-    </div>
+    {% endfor %}
 
 </div>
 

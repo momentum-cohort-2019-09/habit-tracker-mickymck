@@ -24,7 +24,12 @@ class Goal (models.Model):
 class Record (models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name='records')
     goal = models.ForeignKey(to=Goal, on_delete=models.CASCADE, blank=True, null=True, related_name='records')
-    goal_number = None
+    goal_number = models.PositiveIntegerField(default=None, null=True)
     actual_number = models.PositiveIntegerField()
     datetime = models.DateTimeField(default=timezone.now)
 
+    def save(self, *args, **kwargs):
+        if self.goal_number is None:
+            self.goal_number = self.goal.number
+            super().save(*args, **kwargs)
+    
