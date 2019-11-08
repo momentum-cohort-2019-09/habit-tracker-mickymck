@@ -10,8 +10,9 @@ body {
 }
 .main-banner {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
     margin: 0 15% 0 5%;
 }
 
@@ -19,6 +20,7 @@ h1 {
     color: #06D6A0;
     font-size: 60px;
     font-weight: 700px;
+    margin: 50px 20px;
 }
 
 .new-goal-link {

@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
-from django.http import Http404
+from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import csrf_protect
 
 from stretch_goals.models import User, Goal, Record
 from stretch_goals.forms import GoalForm, RecordForm
@@ -16,19 +14,22 @@ from rest_framework.response import Response
 
 # Create your views here.
 
-def home(request):
+def home(request, pk=None):
     goals = Goal.objects.all()
-    form = RecordForm(data=request.POST)
     if request.method == 'POST':
+        goal = Goal.objects.get(pk=pk)
+        form = RecordForm(data=request.POST)
         if form.is_valid:
             record = form.save(commit=False)
             record.user = request.user
-            # record.goal = 
+            record.goal = goal
             record.save()
-            return redirect(to='home')
-        else:
-            form = GoalForm(instance=request.user)
+            return JsonResponse({'ok':True})
+    else:
+        form = RecordForm()
     return render(request, "stretch_goals/home.html", {'goals': goals, 'form': form})
+
+
 
 def create_new_goal(request):
     form = GoalForm(data=request.POST)
@@ -113,4 +114,8 @@ class GoalViewSet(viewsets.ModelViewSet):
 class RecordViewSet(viewsets.ModelViewSet):
     queryset = Record.objects.all()
     serializer_class = RecordSerializer
+    
+    def perform_create(self, serializer):
+        breakpoint()
+        pass
  

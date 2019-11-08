@@ -12,24 +12,35 @@ class User (AbstractUser):
 
 class Goal (models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name='goals')
+
     name = models.TextField(max_length=255)
+
     nickname = models.CharField(max_length=100)
+
     greater_than = models.BooleanField()
+
     number = models.PositiveIntegerField()
+
     create_date = models.DateTimeField(default=timezone.now)
     
     def __str__(self):
         return self.nickname
 
+
+
 class Record (models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name='records')
+
     goal = models.ForeignKey(to=Goal, on_delete=models.CASCADE, blank=True, null=True, related_name='records')
+
     goal_number = models.PositiveIntegerField(default=None, blank=True, null=True)
+
     actual_number = models.PositiveIntegerField()
+
     datetime = models.DateTimeField(default=timezone.now)
 
     def save(self, *args, **kwargs):
         if self.goal_number is None:
             self.goal_number = self.goal.number
-            super().save(*args, **kwargs)
+        super().save(*args, **kwargs)
     

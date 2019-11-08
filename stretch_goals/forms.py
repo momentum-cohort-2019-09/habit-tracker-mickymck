@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import ModelForm
 from stretch_goals.models import User, Goal, Record
 
 
@@ -11,4 +12,5 @@ class RecordForm(forms.ModelForm):
     class Meta:
         model = Record
         fields = ['actual_number']
+
 

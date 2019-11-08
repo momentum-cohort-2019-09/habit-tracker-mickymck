@@ -9,8 +9,9 @@
     <div class='goal-card'>
         <div class='goal-card-main-body'>
             <p class='goal-card-title'>{{ goal.nickname }}</p>
-            <!-- <input type='text' class='record-form' data-goalpk='{{ goal.pk }}'> -->
-            <form id='record-form' action='' method='POST'>
+            <!-- <input type='text' class='record-form' data-goal-pk='{{ goal.pk }}'>dataset.goalPk
+            <button type='submit' class="record-submit-button">Submit</button> -->
+            <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
                 {% csrf_token %}
                 {{ form.actual_number }}
                 <button type="submit" class="record-submit-button">Submit</button>

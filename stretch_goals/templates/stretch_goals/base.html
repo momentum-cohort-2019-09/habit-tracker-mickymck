@@ -7,15 +7,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src='static/js/script.js' defer></script>
   {% block meta %}{% endblock %}
   <title>i Will - {% block title %}Home{% endblock %}</title>
 </head>
 <body>
     <div class='main-banner'>
         <h1>i Will</h1>
-        <a href="{% url 'create_new_goal' %}" class='new-goal-link'>Create New Goal</a>
-      </div>
+        <a href="{% url 'create_new_goal' %}" class='new-goal-link'>+ New Goal +</a>
+    </div>
+    <div class=''>
   {% block content %}
   {% endblock %}
+    </div>
 </body>
 </html>
