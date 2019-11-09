@@ -1,0 +1,14 @@
+{% extends "stretch_goals/base.html" %}
+
+{% block content %}
+
+<form action="" method="POST" enctype="multipart/form-data" class="profile-form">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+  <button class="profile-submit-button" type='submit'>Submit</button>
+
+  </form>
+
+{% endblock %}

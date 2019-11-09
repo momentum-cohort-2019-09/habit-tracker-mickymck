@@ -2,9 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
 from stretch_goals.models import User, Goal, Record
-from stretch_goals.forms import GoalForm, RecordForm
+from stretch_goals.forms import GoalForm, RecordForm, ProfileForm
 from stretch_goals.serializers import UserSerializer, GoalSerializer, RecordSerializer
 
 from rest_framework import viewsets, status, mixins, generics
@@ -43,6 +44,20 @@ def create_new_goal(request):
             form = GoalForm(instance=request.user)
 
     return render(request, 'stretch_goals/create_new_goal.html', {"form": form})
+
+
+
+@login_required
+def profile(request):
+    if request.method == "POST":
+        form = ProfileForm(instance=request.user,
+                           data=request.POST, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(to='home')
+    else:
+        form = ProfileForm(instance=request.user)
+    return render(request, 'stretch_goals/profile.html', {"form": form})
 
 # def create_new_record(request):
 #     form = RecordForm(data=request.POST)

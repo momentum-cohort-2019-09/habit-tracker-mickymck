@@ -10,10 +10,7 @@ body {
 }
 .main-banner {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: left;
-    margin: 0 15% 0 5%;
+    justify-content: space-between;
 }
 
 h1 {
@@ -21,6 +18,11 @@ h1 {
     font-size: 60px;
     font-weight: 700px;
     margin: 50px 20px;
+}
+
+.login-logout a {
+    color: #D81159;
+    font-size: 18px;
 }
 
 .new-goal-link {

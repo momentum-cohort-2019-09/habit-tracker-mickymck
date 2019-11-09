@@ -33,9 +33,10 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('<int:pk>/add_record', views.home, name='add_record'),
     path('create_new_goal/', views.create_new_goal, name='create_new_goal'),
+    path('profile/', views.profile, name='profile'),
+    path('accounts/', include('registration.backends.default.urls')),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls), name='api_root'),
-    path('accounts/', include('registration.backends.simple.urls')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     # path('api-goals/', views.GoalsList.as_view(), name='api_goals_list'),

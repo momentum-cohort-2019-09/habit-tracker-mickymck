@@ -2,25 +2,31 @@
 
 {% block content %}
 
-<div class='goals-container'>
+<div class='home-container'>
 
-    {% for goal in goals %}
+    <a href="{% url 'create_new_goal' %}" class='new-goal-link'>+ New Goal +</a>
 
-    <div class='goal-card'>
-        <div class='goal-card-main-body'>
-            <p class='goal-card-title'>{{ goal.nickname }}</p>
-            <!-- <input type='text' class='record-form' data-goal-pk='{{ goal.pk }}'>dataset.goalPk
-            <button type='submit' class="record-submit-button">Submit</button> -->
-            <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
-                {% csrf_token %}
-                {{ form.actual_number }}
-                <button type="submit" class="record-submit-button">Submit</button>
-            </form>
+    <div class='goals-container'>
+
+        {% for goal in goals %}
+
+        <div class='goal-card'>
+            <div class='goal-card-main-body'>
+                <p class='goal-card-title'>{{ goal.nickname }}</p>
+                <!-- <input type='text' class='record-form' data-goal-pk='{{ goal.pk }}'>dataset.goalPk
+                <button type='submit' class="record-submit-button">Submit</button> -->
+                <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
+                    {% csrf_token %}
+                    {{ form.actual_number }}
+                    <button type="submit" class="record-submit-button">Submit</button>
+                </form>
+            </div>
+            <p class='progress-link'>see your progress --></p>
         </div>
-        <p class='progress-link'>see your progress --></p>
-    </div>
 
-    {% endfor %}
+        {% endfor %}
+
+    </div>
 
 </div>
 

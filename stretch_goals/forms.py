@@ -13,4 +13,8 @@ class RecordForm(forms.ModelForm):
         model = Record
         fields = ['actual_number']
 
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['username', 'email']
 
