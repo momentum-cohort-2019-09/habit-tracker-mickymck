@@ -1,22 +1,41 @@
-{% extends "stretch_goals/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
 <div class='goal-form-container'>
 
-    <p>What goal will you be achieving?</p>
     <form action='' method='POST'>
         {% csrf_token %}
-        <!-- {{ form }} -->
-        <label for="name">Name</label>
+
+    <p class='goal-form-intro'>What goal will you be achieving? Follow the examples to fill in the blanks below.</p>
+
+    <div class='goal-form-field'>
+        <label for="name">What are you going to accomplish every day?</label>
+        <br>
         {{ form.name }}
-        <label for="nickname">Nickname</label>
-        {{ form.nickname }}
-        <label for="greater_than">Greater_Than</label>
+    </div>
+    
+    <div class='goal-form-field'>
+        <label for="greater_than">More Than?</label>
         {{ form.greater_than }}
-        <label for="number">Number</label>
+    </div>
+
+    <div class='goal-form-field'>
+        <label for="number">How Many?</label>
+        <br>
         {{ form.number }}
-        <button type='submit'>Pose Question</button>
+    </div>
+
+    <div class='goal-form-field'>
+        <label for="nickname">Nickname</label>
+        <br>
+        {{ form.nickname }}
+    </div>
+
+    <div class='goal-button'>
+        <button type='submit' id='create-goal-button'>Create Goal</button>
+    </div>
+
     </form>
 
 </div>

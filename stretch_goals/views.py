@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
+from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 
@@ -15,6 +16,7 @@ from rest_framework.response import Response
 
 # Create your views here.
 
+@login_required
 def home(request, pk=None):
     goals = Goal.objects.all()
     if request.method == 'POST':
@@ -28,10 +30,11 @@ def home(request, pk=None):
             return JsonResponse({'ok':True})
     else:
         form = RecordForm()
+        
     return render(request, "stretch_goals/home.html", {'goals': goals, 'form': form})
 
 
-
+@login_required
 def create_new_goal(request):
     form = GoalForm(data=request.POST)
     if request.method == 'POST':

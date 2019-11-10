@@ -1,33 +1,50 @@
-{% extends "stretch_goals/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 
-<div class='home-container'>
+{% if goals.count %}
 
-    <a href="{% url 'create_new_goal' %}" class='new-goal-link'>+ New Goal +</a>
+    <div class='home-container'>
 
-    <div class='goals-container'>
-
-        {% for goal in goals %}
-
-        <div class='goal-card'>
-            <div class='goal-card-main-body'>
-                <p class='goal-card-title'>{{ goal.nickname }}</p>
-                <!-- <input type='text' class='record-form' data-goal-pk='{{ goal.pk }}'>dataset.goalPk
-                <button type='submit' class="record-submit-button">Submit</button> -->
-                <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
-                    {% csrf_token %}
-                    {{ form.actual_number }}
-                    <button type="submit" class="record-submit-button">Submit</button>
-                </form>
-            </div>
-            <p class='progress-link'>see your progress --></p>
+        <div class='home-container-left'>
+            <a href="{% url 'create_new_goal' %}" class='new-goal-link'>+ New Goal +</a>
         </div>
 
-        {% endfor %}
+        <div class='goals-container'>
+            <p class='goal-explanation'>Every time you come one step closer to achieving your goal,<br> input your success below</p>
+
+            {% for goal in goals %}
+
+            <div class='goal-card'>
+                <div class='goal-card-main-body'>
+                    <p class='goal-card-title'>{{ goal.nickname }}</p>
+                    <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
+                        {% csrf_token %}
+                        {{ form.actual_number }}
+                        <button type="submit" class="record-submit-button">Submit</button>
+                    </form>
+                </div>
+                <div class='progress-link'>
+                    <p>see your progress --></p>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+        <div class='home-container-right'>
+            <p> </p>
+        </div>
 
     </div>
 
-</div>
+{% else %}
+
+    <div class='first-create-goal'>
+        <a href="{% url 'create_new_goal' %}" class='new-goal-link'>+ New Goal +</a>
+    </div>
+
+{% endif %}
 
 {% endblock %}

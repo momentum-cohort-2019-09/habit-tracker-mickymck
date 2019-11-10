@@ -13,10 +13,12 @@ class User (AbstractUser):
     def __str__(self):
         return self.username
 
+
+
 class Goal (models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, blank=True, null=True, related_name='goals')
 
-    name = models.TextField(max_length=255)
+    name = models.CharField(max_length=255)
 
     nickname = models.CharField(max_length=100)
 
