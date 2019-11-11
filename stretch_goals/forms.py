@@ -18,7 +18,7 @@ class GoalForm(forms.ModelForm):
 class RecordForm(forms.ModelForm):
     class Meta:
         model = Record
-        fields = ['actual_number', 'date']
+        fields = ['actual_number']
 
 class ProfileForm(forms.ModelForm):
     class Meta:

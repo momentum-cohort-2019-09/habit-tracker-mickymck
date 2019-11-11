@@ -81,18 +81,15 @@ def records(request):
 @login_required
 @csrf_exempt
 def edit_record(request, pk):
+    record = Record.objects.get(pk=pk)
     if request.method == 'POST':
-        form = RecordForm(data=request.POST)
-        original_record = Record.objects.get(pk=pk)
+        form = RecordForm(data=request.POST, instance=record)
+        print(form)
         if form.is_valid():
-            record = form.save(commit=False)
-            record.user = request.user
-            record.goal = goal
-            record.save()
-            original_record.delete()
+            form.save()
             return JsonResponse({'ok':True})
     else:
-        form = RecordForm()
+        form = RecordForm(instance=record)
         
     return render(request, "stretch_goals/records.html", {'form': form})
 

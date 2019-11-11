@@ -51,4 +51,5 @@ class Record (models.Model):
         if self.goal_number is None:
             self.goal_number = self.goal.number
         super().save(*args, **kwargs)
+        
     
