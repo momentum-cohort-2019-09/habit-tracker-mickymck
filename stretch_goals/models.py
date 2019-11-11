@@ -26,7 +26,7 @@ class Goal (models.Model):
 
     number = models.PositiveIntegerField()
 
-    create_date = models.DateTimeField(default=timezone.now)
+    create_date = models.DateField(default=timezone.now)
     
     def __str__(self):
         return self.nickname
@@ -42,7 +42,10 @@ class Record (models.Model):
 
     actual_number = models.PositiveIntegerField()
 
-    datetime = models.DateTimeField(default=timezone.now)
+    date = models.DateField(default=timezone.now)
+
+    # class Meta:
+    #    unique_together = ('goal', 'date')
 
     def save(self, *args, **kwargs):
         if self.goal_number is None:

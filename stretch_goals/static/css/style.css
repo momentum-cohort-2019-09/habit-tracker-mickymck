@@ -105,12 +105,40 @@ h1 {
     font-size: 34px;
 }
 
+.record-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 60%;
+    background-color: #f6f0e7;
+    border-radius: 10px;
+}
+
+.record-container th {
+    text-align: center;
+    margin: 0;
+    font-size: 22px;
+    color: #073B4C;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #073B4C;
+}
+
+.record-container td {
+    text-align: center;
+    margin: 0;
+    font-size: 18px;
+    color: #073B4C;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
 .goal-card {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 275px;
-    height: 350px;
+    height: 400px;
     background-color: #006494;
     color: #f6f0e7;
     margin: 2% 1%;
@@ -118,9 +146,14 @@ h1 {
     box-shadow: -5px 8px 10px 0px rgba(0,0,0,0.7);
 }
 
-/* .goal-card p {
-    font-size: 20px;
-} */
+.record-card {
+    display: flex;
+    justify-content: space-evenly;
+    height: 50px;
+}
+
+.record-table {
+}
 
 .goal-form-container {
     display: flex;
@@ -184,7 +217,7 @@ h1 {
 .goal-card-main-body {
     display: flex;
     flex-direction: column;
-    /* text-align: center; */
+    padding-top: 30px;
 }
 
 .goal-card-title {
@@ -211,16 +244,24 @@ h1 {
     box-shadow: -1px 2px 4px 0px rgba(0,0,0,0.6);
 }
 
-.progress-link {
+.edit-record-button {
+    color: #073B4C;
+    background-color: #f6f0e7;
+    border-radius: 5px;
+}
+
+.record-links {
     display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    align-items: center;
+    align-items: right;
     text-align: right;
     padding-right: 5%;
 }
 
-.progress-link p {
-    padding: 0;
+.record-links p {
+    text-align: right;
+    padding-bottom: 25px;
     margin: 0;
     font-size: 20px;
 }

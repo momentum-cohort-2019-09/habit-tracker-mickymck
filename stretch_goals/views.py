@@ -4,6 +4,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.db.models import Sum
 
 from stretch_goals.models import User, Goal, Record
 from stretch_goals.forms import GoalForm, RecordForm, ProfileForm
@@ -61,6 +62,35 @@ def profile(request):
     else:
         form = ProfileForm(instance=request.user)
     return render(request, 'stretch_goals/profile.html', {"form": form})
+
+
+
+@login_required
+@csrf_exempt
+def records(request):
+    records = Record.objects.all()
+    # daily_number = records.aggregate(Sum('actual_number'))
+    # print(daily_number)
+
+    return render(request, "stretch_goals/records.html", {'records': records})
+
+
+
+# @login_required
+# @csrf_exempt
+# def records(request):
+#     records = Record.objects.all()
+#     form = RecordForm(data=request.POST)
+#     if request.method == 'PUT':
+#         record = Record.objects.get(pk=pk)
+#         if form.is_valid:
+#             record = form.save()
+#             return redirect(to='home')
+#     else:
+#         form = RecordForm(instance=request.user)
+
+#     return render(request, "stretch_goals/records.html", {'records': records, 'form': form})
+
 
 # def create_new_record(request):
 #     form = RecordForm(data=request.POST)

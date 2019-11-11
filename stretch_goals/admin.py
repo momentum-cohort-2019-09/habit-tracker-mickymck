@@ -5,7 +5,7 @@ from stretch_goals.models import User, Goal, Record
 # Register your models here.
 
 class RecordAdmin(admin.ModelAdmin):
-    list_display = ('user', 'goal', 'goal_number', 'actual_number', 'datetime')
+    list_display = ('user', 'goal', 'goal_number', 'actual_number', 'date')
 
 
 admin.site.register(User, UserAdmin)

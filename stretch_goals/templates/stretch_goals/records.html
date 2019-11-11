@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+        
+    <div class='record-container'>
+
+
+    <table class='record-table'>
+            <tr>
+                <th>Goal</th>
+                <th>Date</th>
+                <th>Daily #</th>
+                <th>Target #</th>
+                <th>Edit</th>
+            </tr>
+    {% for record in records %}
+            <tr>
+              <td>{{ record.goal.nickname }}</td>
+              <td>{{ record.date }}</td>
+              <td>{{ record.actual_number }}</td>
+              <td>{{ record.goal_number }}</td>
+              <td><button type='submit' class='edit-record-button'>Edit</button></td>
+            </tr>
+
+    {% endfor %}
+
+    </table>
+
+    </div>
+
+            <!-- <div class='record-card'>
+                
+                <div class='record-card-main-body'>
+                    
+                    <p class='record-card-title'>{{ record.goal.nickname }}</p>
+                    <p class='record-card-date'>{{ record.datetime }}</p>
+
+                    <form class='edit-record-form' action='' method='PUT' data-record-pk='{{ record.pk }}'>
+                        {% csrf_token %}
+                        {{ form.actual_number }}
+                        <button type="submit" class="record-edit-button">Edit</button>
+                    </form>
+
+                    <p class='record-actual-number'>Your achievement: {{ record.actual_number }}</p>
+                    <p class='record-goal-number'>Your goal: {{ record.goal_number }}</p>
+                    <button type='submit' class='edit-record-button'>Edit</button>
+                
+                </div>
+            
+            </div> -->
+    
+    <!-- <script>
+
+        let all_edit_record_buttons = document.querySelectorAll('.edit-record-button')
+        for (let edit_record_button of all_edit_record_buttons) {
+            edit_record_button.addEventListener('click', event => {
+                alert('yes?')
+                edit_record_button.parentElement.querySelector('.record-actual-number').style.display = 'none'
+                edit_record_button.parentElement.querySelector('#edit-record-form').style.display = 'inline-block'
+            })
+        }
+    
+    </script> -->
+
+{% endblock %}

@@ -32,6 +32,7 @@ router.register(r'records', views.RecordViewSet)
 urlpatterns = [
     path('', views.home, name='home'),
     path('<int:pk>/add_record', views.home, name='add_record'),
+    path('records/', views.records, name='records'),
     path('create_new_goal/', views.create_new_goal, name='create_new_goal'),
     path('profile/', views.profile, name='profile'),
     path('accounts/', include('registration.backends.default.urls')),

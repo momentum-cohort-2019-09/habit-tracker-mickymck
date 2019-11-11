@@ -21,11 +21,14 @@
                     <form class='record-form' action='' method='POST' data-goal-pk='{{ goal.pk }}'>
                         {% csrf_token %}
                         {{ form.actual_number }}
+                        {{ form.date }}
                         <button type="submit" class="record-submit-button">Submit</button>
                     </form>
                 </div>
-                <div class='progress-link'>
-                    <p>see your progress --></p>
+                <div class='record-links'>
+                    <p>create a past entry --></p>
+                    <p>edit an entry --></p>
+                    <a href="{% url 'records' %}">see your progress --></a>
                 </div>
             </div>
 

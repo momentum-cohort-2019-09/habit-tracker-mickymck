@@ -18,3 +18,4 @@ for (let form of document.querySelectorAll('.record-form')) {
         })
     })
 }
+
