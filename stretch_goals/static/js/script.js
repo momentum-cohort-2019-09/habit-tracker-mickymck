@@ -36,16 +36,16 @@ for (let form of document.querySelectorAll('.hidden-record-form')) {
         fetch(`/${form.dataset.recordPk}/edit_record`, {
             method: 'POST'
         })
-        // .then(res => res.json())
-        // .then(data => {
-        //     if(data.ok) {
-        //         // Asynchronously rerender hompage 
-        //         // Remove number and maybe show that it was logged
-        //         alert('good')
-        //     } else {
-        //         alert("no good")
-        //     }
-        // })
+        .then(res => res.json())
+        .then(data => {
+            if(data.ok) {
+                // Asynchronously rerender hompage 
+                // Remove number and maybe show that it was logged
+                alert('good')
+            } else {
+                alert("no good")
+            }
+        })
     })
 }
 
