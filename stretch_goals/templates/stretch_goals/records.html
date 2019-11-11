@@ -17,9 +17,15 @@
             <tr>
               <td>{{ record.goal.nickname }}</td>
               <td>{{ record.date }}</td>
-              <td>{{ record.actual_number }}</td>
+              <td class='hidden-actual-number'>{{ record.actual_number }}</td>
+              <td>
+                  <form class='hidden-record-form' data-record-pk='{{ record.pk }}'>
+                  {{ form.actual_number }}
+                  <button type="submit" class="record-submit-button">Submit</button>
+                  </form>
+                </td>
               <td>{{ record.goal_number }}</td>
-              <td><button type='submit' class='edit-record-button'>Edit</button></td>
+              <td class='edit-record-button'>Edit</td>
             </tr>
 
     {% endfor %}
@@ -27,6 +33,7 @@
     </table>
 
     </div>
+
 
             <!-- <div class='record-card'>
                 
@@ -48,18 +55,5 @@
                 </div>
             
             </div> -->
-    
-    <!-- <script>
-
-        let all_edit_record_buttons = document.querySelectorAll('.edit-record-button')
-        for (let edit_record_button of all_edit_record_buttons) {
-            edit_record_button.addEventListener('click', event => {
-                alert('yes?')
-                edit_record_button.parentElement.querySelector('.record-actual-number').style.display = 'none'
-                edit_record_button.parentElement.querySelector('#edit-record-form').style.display = 'inline-block'
-            })
-        }
-    
-    </script> -->
 
 {% endblock %}

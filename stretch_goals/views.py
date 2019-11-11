@@ -69,12 +69,25 @@ def profile(request):
 @csrf_exempt
 def records(request):
     records = Record.objects.all()
+    form = RecordForm()
     # daily_number = records.aggregate(Sum('actual_number'))
     # print(daily_number)
 
-    return render(request, "stretch_goals/records.html", {'records': records})
+    return render(request, "stretch_goals/records.html", {'records': records, 'form': form})
 
-
+@login_required
+@csrf_exempt
+def edit_record(request, pk):
+    if request.method == 'PUT':
+        form = RecordForm(data=request.PUT)
+        record = Record.objects.get(pk=pk)
+        if form.is_valid:
+            form.save()
+            return JsonResponse({'ok':True})
+    else:
+        form = RecordForm()
+        
+    return render(request, "stretch_goals/records.html", {'form': form})
 
 # @login_required
 # @csrf_exempt
