@@ -14,16 +14,16 @@
                 <th>Edit</th>
             </tr>
     {% for record in records %}
-            <tr>
+            <tr class='record-row'>
               <td>{{ record.goal.nickname }}</td>
               <td>{{ record.date }}</td>
-              <td class='hidden-actual-number'>{{ record.actual_number }}</td>
-              <td>
-                  <form class='hidden-record-form' data-record-pk='{{ record.pk }}'>
-                  {{ form.actual_number }}
-                  <button type="submit" class="record-submit-button">Submit</button>
-                  </form>
-                </td>
+              <td class='hidden-cell'>
+                <div class='hidden-actual-number'>{{ record.actual_number }}</div>
+                <form class='hidden-record-form' data-record-pk='{{ record.pk }}'>
+                    {{ form.actual_number }}
+                    <button type="submit" class="record-submit-button">Submit</button>
+                </form>
+              </td>
               <td>{{ record.goal_number }}</td>
               <td class='edit-record-button'>Edit</td>
             </tr>

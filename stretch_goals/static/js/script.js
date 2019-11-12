@@ -11,9 +11,8 @@ for (let form of document.querySelectorAll('.record-form')) {
             if(data.ok) {
                 // Asynchronously rerender hompage 
                 // Remove number and maybe show that it was logged
-                alert('good')
-            } else {
-                alert("no good")
+                alert('record saved!')
+                form.reset()
             }
         })
     })
@@ -40,9 +39,7 @@ for (let form of document.querySelectorAll('.hidden-record-form')) {
         .then(res => res.json())
         .then(data => {
             if(data.ok) {
-                alert('good')
-            } else {
-                alert("no good")
+                location.reload(true)
             }
         })
     })
