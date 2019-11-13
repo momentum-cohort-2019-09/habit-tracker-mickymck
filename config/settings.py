@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     # Third-party
     'registration',
     'debug_toolbar',
-    'django-heroku',
 
     # Built-in
     'django.contrib.admin',
