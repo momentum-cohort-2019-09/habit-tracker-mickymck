@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     # Third-party
     'registration',
     'debug_toolbar',
-    'django_tables2',
     'django-heroku',
 
     # Built-in
