@@ -12,8 +12,8 @@ django = ">=2.2"
 django-debug-toolbar = "*"
 django-registration-redux = "*"
 djangorestframework = "*"
-chart-js = "*"
-django-tables2 = "*"
+psycopg2-binary = "*"
+django-heroku = "*"
 
 [requires]
 python_version = "3.7"

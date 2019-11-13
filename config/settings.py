@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     # Third-party
     'registration',
     'debug_toolbar',
-    "django_tables2",
+    'django_tables2',
+    'django-heroku',
 
     # Built-in
     'django.contrib.admin',
@@ -140,3 +141,8 @@ INTERNAL_IPS = [
 ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/'
+
+# Configure Django App for Heroku.
+import django_heroku
+django_heroku.settings(locals())
+
